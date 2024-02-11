@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMEKKIZ</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,800">
+    <style>
+        body {
+            background: #e4e1e1;
+            font-family: 'Open Sans', sans-serif;
+            text-align: center;
+            display: flex;
+            flex-direction: column; /* İçerik dikey olarak hizalanacak */
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .play {
+            display: block;
+            width: 0;
+            height: 0;
+            border-top: 50px solid transparent;
+            border-bottom: 50px solid transparent;
+            border-left: 60px solid #2c3e50;
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s;
+        }
+
+        .play:before {
+            content: '';
+            position: absolute;
+            top: -75px;
+            left: -115px;
+            bottom: -75px;
+            right: -35px;
+            border-radius: 50%;
+            border: 10px solid #2c3e50;
+            z-index: 2;
+            transition: all 0.3s;
+        }
+
+        .play:after {
+            content: '';
+            opacity: 0;
+            transition: opacity 0.6s;
+        }
+
+        .play:hover:before, .play:focus:before {
+            transform: scale(1.1);
+        }
+
+        .play.active {
+            border-color: transparent;
+        }
+
+        .play.active:after {
+            content: '';
+            opacity: 1;
+            width: 50px;
+            height: 80px;
+            background: #2c3e50;
+            position: absolute;
+            right: 5px;
+            top: -40px;
+            border-left: 20px solid #2c3e50;
+            box-shadow: inset 30px 0 0 0 #e4e1e1;
+        }
+
+        .btn {
+            display: inline-block;
+            font-weight: 400;
+            color: #fff;
+            background-color: #2c3e50;
+            border-color: #2c3e50;
+            padding: 0.375rem 0.75rem;
+            font-size: 0.9375rem;
+            line-height: 1.5;
+            border-radius: 0.25rem;
+            transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+            margin-top: 20px; /* Play butonundan 20px aşağıya */
+        }
+
+        .btn:hover {
+            background-color: #1e2b37;
+            border-color: #1a252f;
+        }
+
+        .btn:focus, .btn.focus {
+            background-color: #1e2b37;
+            border-color: #1a252f;
+            box-shadow: 0 0 0 0.2rem rgba(76, 91, 106, 0.5);
+        }
+
+        .btn:disabled {
+            background-color: #2c3e50;
+            border-color: #2c3e50;
+        }
+
+        .btn:active, .btn.active {
+            background-color: #1a252f;
+            border-color: #151e27;
+        }
+
+        .btn:active:focus, .btn.active:focus {
+            box-shadow: 0 0 0 0.2rem rgba(76, 91, 106, 0.5);
+        }
+
+        .btn-text {
+            position: absolute;
+            top: 20px; /* Butonun üst kısmından 20px aşağıda başlat */
+            left: 50%; /* Butonun ortasına hizala */
+            transform: translateX(-50%); /* X ekseninde ortala */
+            font-size: 1.5rem; /* Büyük bir font boyutu */
+            color: #555; /* Gri renk */
+        }
+
+        .reload-btn {
+            margin-top: 50px; /* Play butonundan 20px aşağıya */
+		margin-left: -18px; /* Biraz sola kaydır */
+        }
+    </style>
+</head>
+<body>
+    <div class="play" id="playButton"></div> <!-- Play düğmesi -->
+    <span class="btn-text">EMEKKIZ</span>
+    <a href="#" class="btn reload-btn" id="reloadButton">Sayfayı Yenile</a> <!-- Sayfayı yenileme linki -->
+
+    <script>
+        const audio = new Audio('https://yayin.tiklay.in/radio/3260/9e0d3761d6e4983e3386b4359c25f6ec.mp3');
+        let isPlaying = false;
+
+        const playButton = document.getElementById('playButton');
+        const reloadButton = document.getElementById('reloadButton');
+
+        playButton.addEventListener('click', togglePlay);
+        reloadButton.addEventListener('click', reloadPage);
+
+        function togglePlay() {
+            if (isPlaying) {
+                audio.pause();
+                isPlaying = false;
+                playButton.classList.remove('active');
+            } else {
+                audio.play();
+                isPlaying = true;
+                playButton.classList.add('active');
+            }
+        }
+
+        function reloadPage() {
+            location.reload();
+        }
+    </script>
+</body>
+</html>
