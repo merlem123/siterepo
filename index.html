@@ -11,7 +11,7 @@
             font-family: 'Open Sans', sans-serif;
             text-align: center;
             display: flex;
-            flex-direction: column; /* İçerik dikey olarak hizalanacak */
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -81,7 +81,7 @@
             line-height: 1.5;
             border-radius: 0.25rem;
             transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
-            margin-top: 20px; /* Play butonundan 20px aşağıya */
+            margin-top: 20px;
         }
 
         .btn:hover {
@@ -111,23 +111,23 @@
 
         .btn-text {
             position: absolute;
-            top: 20px; /* Butonun üst kısmından 20px aşağıda başlat */
-            left: 50%; /* Butonun ortasına hizala */
-            transform: translateX(-50%); /* X ekseninde ortala */
-            font-size: 1.5rem; /* Büyük bir font boyutu */
-            color: #555; /* Gri renk */
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.5rem;
+            color: #555;
         }
 
         .reload-btn {
-            margin-top: 50px; /* Play butonundan 20px aşağıya */
-		margin-left: -18px; /* Biraz sola kaydır */
+            margin-top: 50px;
+		margin-left: -18px;
         }
     </style>
 </head>
 <body>
-    <div class="play" id="playButton"></div> <!-- Play düğmesi -->
+    <div class="play" id="playButton"></div>
     <span class="btn-text">EMEKKIZ</span>
-    <a href="#" class="btn reload-btn" id="reloadButton">Sayfayı Yenile</a> <!-- Sayfayı yenileme linki -->
+    <a href="#" class="btn reload-btn" id="reloadButton">Sayfayı Yenile</a>
 
     <script>
         const audio = new Audio('https://yayin.tiklay.in/radio/3260/9e0d3761d6e4983e3386b4359c25f6ec.mp3');
